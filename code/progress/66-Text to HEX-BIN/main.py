@@ -18,13 +18,19 @@ class Converter:
         return bin_text
 
     def hex_to_text(user_string):
-        pass
+        return bytes.fromhex(user_string).decode("utf-8")
 
     def hex_to_bin(user_string):
-        pass
+        return Converter.text_to_bin(Converter.hex_to_text(user_string))
 
     def bin_to_text(user_string):
-        pass
+        # print(user_string[::-1])
+        list_bin = []
+        for i in range(0, len(user_string), 8):
+            result = user_string[::-1][i : i + 8][::-1]
+            print(result)
+            list_bin.append(result)
+        # print(" ".join(list_bin))
 
     def bin_to_hex(user_string):
         pass
