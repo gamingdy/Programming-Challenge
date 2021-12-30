@@ -32,7 +32,7 @@ class Converter:
         return final_string
 
     def bin_to_hex(user_string):
-        pass
+        return Converter.text_to_hex(Converter.bin_to_text(user_string))
 
 
 all_option = {
@@ -41,7 +41,7 @@ all_option = {
     "3": ("Convert hex to text", Converter.hex_to_text),
     "4": ("Convert hex to bin", Converter.hex_to_bin),
     "5": ("Convert bin to text", Converter.bin_to_text),
-    "6": ("Convert bin to hex", Converter.bin_to_text),
+    "6": ("Convert bin to hex", Converter.bin_to_hex),
     "0": ("Exit",),
 }
 
