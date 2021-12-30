@@ -24,13 +24,12 @@ class Converter:
         return Converter.text_to_bin(Converter.hex_to_text(user_string))
 
     def bin_to_text(user_string):
-        # print(user_string[::-1])
-        list_bin = []
+        user_string = user_string.replace(" ", "")
+        final_string = ""
         for i in range(0, len(user_string), 8):
-            result = user_string[::-1][i : i + 8][::-1]
-            print(result)
-            list_bin.append(result)
-        # print(" ".join(list_bin))
+            result = user_string[i : i + 8]
+            final_string += chr(int(result, 2))
+        return final_string
 
     def bin_to_hex(user_string):
         pass
@@ -66,4 +65,4 @@ while True:
             sys.exit()
         user_string = input(f"String to {all_option[user_choice][0].lower()}: ")
         result = all_option[user_choice][1](user_string)
-        print("This your result", result)
+        print("This is your result:", result)
