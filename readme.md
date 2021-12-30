@@ -1,6 +1,10 @@
 [challenge_img]: programming_challenges.png
-[progress_percentage]: https://us-central1-progress-markdown.cloudfunctions.net/progress/1
+[progress_percentage]: https://us-central1-progress-markdown.cloudfunctions.net/progress/2
 
+[easy]:https://us-central1-progress-markdown.cloudfunctions.net/progress/8
+[medium]:https://us-central1-progress-markdown.cloudfunctions.net/progress/0
+[difficult]:https://us-central1-progress-markdown.cloudfunctions.net/progress/0
+[god]:https://us-central1-progress-markdown.cloudfunctions.net/progress/0
 
 # My Programming Challenge
 
@@ -11,6 +15,12 @@ In this repo, I will try to do all these challenges.
 
 ## My progress : 
 
-2/145 challenge complete
+| Difficulty | Complete | Percentage             |
+| ---------- | -------- | ---------------------- |
+| Easy       |   3/37   | ![easy]                |
+| Medium     |   0/76   | ![medium]              |
+| Difficult  |   0/29   | ![difficult]           |
+| Fuck you   |   0/3    | ![god]                 |
+| TOTAL      |   3/145  | ![progress_percentage] |
 
-![progress_percentage]
+
