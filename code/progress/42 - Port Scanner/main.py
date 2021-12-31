@@ -1,3 +1,4 @@
+# author : gamingdy
 import socket
 import time
 import sys
@@ -7,6 +8,19 @@ ip = input("Enter target ip address: ")
 
 
 def scan(address, port_range=None):
+def ask_range():
+    while True:
+        port_range = input("Do you want to specify port range ? y/n").lower()
+        if port_range == "y":
+            range_port = input("Enter your range: start-end : ").split("-")
+            start_port = int(range_port[0])
+            end_port = int(range_port[1])
+            return range(start_port, end_port + 1)
+        elif port_range == "n":
+            return None
+
+
+def scan(address, _range=None):
     common_port = [
         20,
         21,
@@ -52,10 +66,10 @@ def scan(address, port_range=None):
     ]
     hostname = socket.gethostbyname(address)
 
-    scan_port = common_port
+    scan_port = _range if _range else common_port
     for port in scan_port:
-        print(port)
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        socket.setdefaulttimeout(1)
         try:
 
             result = server.connect_ex((hostname, port))
@@ -69,7 +83,10 @@ def scan(address, port_range=None):
 
 
 start_time = time.time()
+range_port = ask_range()
 print("-" * 30)
 print("Scanning remote host...")
 print("-" * 30)
-scan(ip)
+scan(ip, range_port)
+total_time = time.time() - start_time
+print("Elapsed time: " + str(total_time))
