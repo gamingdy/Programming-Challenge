@@ -7,7 +7,6 @@ import sys
 ip = input("Enter target ip address: ")
 
 
-def scan(address, port_range=None):
 def ask_range():
     while True:
         port_range = input("Do you want to specify port range ? y/n").lower()
