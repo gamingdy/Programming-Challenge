@@ -1,7 +1,17 @@
+"""
+author : gamingdy
+
+You must call the decrypt function with an encoded sentence using the Caesar code. 
+It will return an ordered list from the most logical to the least logical sentence
+"""
+
 import json
+import string
 
 with open("letter_frequencies.json", "r") as letter_frequencies:
     letter_frequencies = json.load(letter_frequencies)
+
+punctuations = string.punctuation + " "
 
 
 def similarity_score(sentence):
@@ -15,11 +25,16 @@ def _caesar_encrypt(sentence, key):
     sentence = sentence.lower()
     new_sentence = ""
     for char in sentence:
-        actual_pos = ord(char)
-        new_pos_number = (
-            (actual_pos + key) if (actual_pos + key) <= 122 else (actual_pos + key) - 26
-        )
-        new_sentence += chr(new_pos_number)
+        if char in punctuations:
+            new_sentence += char
+        else:
+            actual_pos = ord(char)
+            new_pos_number = (
+                (actual_pos + key)
+                if (actual_pos + key) <= 122
+                else (actual_pos + key) - 26
+            )
+            new_sentence += chr(new_pos_number)
     return new_sentence
 
 
@@ -34,7 +49,6 @@ def sort_result(list_score):
 
 
 def decrypt(sentence):
-    highest_score = 0
     list_score = []
 
     for i in range(1, 26):
@@ -48,8 +62,3 @@ def decrypt(sentence):
         result.append(_caesar_encrypt(sentence, element[1]))
 
     return result
-
-
-a = "mjqqt"
-b = decrypt(a)
-print(b)
