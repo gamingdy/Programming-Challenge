@@ -2,35 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 CHARACTER = ["@", "#", "$", "%", "?", "*", "+", ";", ":", ",", "."]
-MAX_VALUE = 255 * 4
 
-HTML_TEMPLATE = """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASCII Art</title>
-</head>
-<body>
-    <style>
-    {}
-    </style>
-    <div>
-        <pre>{}</pre>
-    </div>
-</body>
-</html>
-"""
-CSS_STYLE = """
-*{
-    background-color: black;
-    margin: 0;
-    color: white;
-}
-
-"""
 
 
 def get_pixel_density(pixel):
