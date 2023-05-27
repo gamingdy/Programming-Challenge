@@ -4,7 +4,6 @@ from PIL import Image, ImageDraw, ImageFont
 CHARACTER = [".", ",", ":", ";", "+", "*", "?", "%", "$", "#", "@"]
 
 
-
 def get_pixel_density(pixel):
     return pixel // 25
 
@@ -22,18 +21,13 @@ def save_image(ascii_string, width, height, out_file):
         line += 1
 
     with open(f"{out_file}.txt", "w") as file:
-        # file.write(HTML_TEMPLATE.format(CSS_STYLE, ascii_image))
         file.write(ascii_image)
 
-    print(width, height)
     image = Image.new("L", (width * 2, height * 4))
     draw = ImageDraw.Draw(image)
     font = ImageFont.truetype("RobotoMono-Regular.ttf", 3)
-    # draw.text((0, 0), "test")
-    print("Writing text in image")
     draw.multiline_text((0, 0), ascii_image, font=font, fill="white", spacing=0)
     image.save(out_file)
-    image.save("test.png")
 
 
 def convert(image_path):
