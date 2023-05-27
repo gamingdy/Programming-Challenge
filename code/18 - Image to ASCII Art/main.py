@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont
 
 
-CHARACTER = ["@", "#", "$", "%", "?", "*", "+", ";", ":", ",", "."]
+CHARACTER = [".", ",", ":", ";", "+", "*", "?", "%", "$", "#", "@"]
 
 
 
