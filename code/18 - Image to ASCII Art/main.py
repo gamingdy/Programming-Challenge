@@ -28,11 +28,11 @@ def save_image(ascii_string, width, height, out_file):
     print(width, height)
     image = Image.new("L", (width * 2, height * 4))
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype("RobotoMono-Regular.ttf", 4)
+    font = ImageFont.truetype("RobotoMono-Regular.ttf", 3)
     # draw.text((0, 0), "test")
     print("Writing text in image")
     draw.multiline_text((0, 0), ascii_image, font=font, fill="white", spacing=0)
-    # image.show()
+    image.save(out_file)
     image.save("test.png")
 
 
@@ -41,9 +41,11 @@ def convert(image_path):
     width, height = img.size
 
     ratio = height / width
-    # width = 500
-    width = width * 4
-    height = int(ratio * width * 0.5)
+
+    if width > 500:
+        width = 500
+
+    height = int(ratio * width * 0.55)
     # img.thumbnail((width, height), Image.Resampling.LANCZOS)
     img = img.resize((width, height))
 
