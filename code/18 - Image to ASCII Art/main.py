@@ -1,3 +1,7 @@
+import argparse
+import os
+import sys
+
 from PIL import Image, ImageDraw, ImageFont
 
 
@@ -30,17 +34,18 @@ def save_image(ascii_string, width, height, out_file):
     image.save(out_file)
 
 
-def convert(image_path):
+def convert(image_path, custom_width):
     img = Image.open(image_path).convert("L")
     width, height = img.size
 
     ratio = height / width
-
-    if width > 500:
-        width = 500
+    if not custom_width:
+        if width > 700:
+            width = 700
+    else:
+        width = custom_width
 
     height = int(ratio * width * 0.55)
-    # img.thumbnail((width, height), Image.Resampling.LANCZOS)
     img = img.resize((width, height))
 
     ascii_string = ""
@@ -52,5 +57,35 @@ def convert(image_path):
     return ascii_string, width, height
 
 
-ascii_, width, height = convert("566208.jpg")
-save_image(ascii_, width, height, "res")
+def check_img_path(image_path):
+    return os.path.isfile(image_path)
+
+
+def check_out_dir(out_path):
+    directory = os.path.dirname(out_path)
+    directory = directory if len(directory) > 0 else "./"
+    return os.path.isdir(directory)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        prog="Image To Ascii Art", description="Convert an image to Ascii art."
+    )
+
+    parser.add_argument("file", help="Path to image to convert")
+    parser.add_argument("out", help="Path where to save converted image")
+    parser.add_argument(
+        "-w", "--width", type=int, help="Specify custom width of output"
+    )
+    args = parser.parse_args()
+
+    if not check_img_path(args.file):
+        print(f"The file {args.file} does not exist. Check that the path is correct.")
+        sys.exit()
+
+    if not check_out_dir(args.out):
+        print(f"The directory {args.out} does not exist. Check that the is correct.")
+        sys.exit()
+
+    ascii_string, width, height = convert(args.file, args.width)
+    save_image(ascii_string, width, height, args.out)
