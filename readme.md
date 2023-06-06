@@ -1,7 +1,7 @@
 [challenge_img]: programming_challenges.png
-[progress_percentage]: https://progress-bar.dev/5
+[progress_percentage]: https://progress-bar.dev/6
 
-[easy]:https://progress-bar.dev/19
+[easy]:https://progress-bar.dev/21
 [medium]:https://progress-bar.dev/1
 [difficult]:https://progress-bar.dev/0
 [god]:https://progress-bar.dev/0
@@ -17,8 +17,8 @@ In this repo, I will try to do all these challenges.
 
 | Difficulty | Complete | Percentage             |
 | ---------- | -------- | ---------------------- |
-| Easy       |   7/37   | ![easy]                |
+| Easy       |   8/37   | ![easy]                |
 | Medium     |   1/76   | ![medium]              |
 | Difficult  |   0/29   | ![difficult]           |
 | Fuck you   |   0/3    | ![god]                 |
-| TOTAL      |   8/145  | ![progress_percentage] |
+| TOTAL      |   9/145  | ![progress_percentage] |
