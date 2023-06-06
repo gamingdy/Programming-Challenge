@@ -24,7 +24,7 @@ def save_image(ascii_string, width, height, out_file):
         ascii_image += "\n"
         line += 1
 
-    with open(f"{out_file}.txt", "w") as file:
+    with open(f"{os.path.splitext(out_file)[0]}-AsciiArt.txt", "w") as file:
         file.write(ascii_image)
 
     image = Image.new("L", (width * 2, height * 4))
