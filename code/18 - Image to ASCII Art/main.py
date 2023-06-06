@@ -87,5 +87,9 @@ if __name__ == "__main__":
         print(f"The directory {args.out} does not exist. Check that the is correct.")
         sys.exit()
 
+    if args.width != None and args.width < 300:
+        print("Width must be greater than or equal to 300")
+        sys.exit()
+
     ascii_string, width, height = convert(args.file, args.width)
     save_image(ascii_string, width, height, args.out)
